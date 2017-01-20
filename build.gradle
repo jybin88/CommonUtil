@@ -2,20 +2,21 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:1.5.0'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
     }
 
-    repositories {
-        maven {
-            name 'nd nexus android-public'
-            url "http://nexus.sdp.nd/nexus/content/groups/android-public/"
-        }
-        jcenter()
-    }
+//    repositories {
+//        maven {
+//            name 'nd nexus android-public'
+//            url "https://jitpack.io"
+//        }
+//        jcenter()
+//    }
 }
 
 allprojects {
     repositories {
-        maven { url 'http://nexus.sdp.nd/nexus/content/groups/android-public/' }
+        maven { url "https://jitpack.io"}
         jcenter()
     }
 }
