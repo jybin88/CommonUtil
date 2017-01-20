@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
-//
+/**配置发布开始**/
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.jybin88'
+/**配置发布结束**/
 
 android {
     compileSdkVersion 24
@@ -26,19 +26,6 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:support-annotations:24.2.1"
-    compile "com.android.support:support-v4:24.2.1"
+    compile "com.android.support:support-annotations:23.1.0"
     compile 'com.github.veidy:veidyLibrary:0.1'
-}
-
-uploadArchives{
-    repositories.mavenDeployer {
-        def mavenRepositoryPath = file(getProperty('aar.maventest'))
-        repository(url: "file://${mavenRepositoryPath.absolutePath}")
-        pom.project{
-            groupId "com.nd.ent"
-            artifactId "commonutil"
-            version "0.1"
-        }
-    }
 }
