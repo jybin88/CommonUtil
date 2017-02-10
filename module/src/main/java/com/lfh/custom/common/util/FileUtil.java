@@ -10,6 +10,11 @@ import android.provider.MediaStore;
  * Created by lifuhai on 2017/2/10 0010.
  */
 public class FileUtil {
+
+    public FileUtil() {
+        /* no-op */
+    }
+
     /**
      * 从Uri中获取图片真实地址
      *

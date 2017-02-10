@@ -12,6 +12,11 @@ import java.lang.reflect.Field;
  * Created by lifuhai on 2017/1/19 0019.
  */
 public class ScreenUtil {
+
+    public ScreenUtil() {
+        /* no-op */
+    }
+
     /**
      * 获取状态栏高度
      *

@@ -11,6 +11,11 @@ import android.util.TypedValue;
  * Created by lifuhai on 2017/1/19 0019.
  */
 public class DimenUtil {
+
+    public DimenUtil() {
+        /* no-op */
+    }
+
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
      *

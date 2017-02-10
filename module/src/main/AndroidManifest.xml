@@ -1,8 +1,66 @@
-<manifest package="com.lfh.custom.common.util"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.lfh.custom.common.util">
 
-    <application >
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.google.android.gm.permission.READ_CONTENT_PROVIDER"/>
+    <uses-permission android:name="com.android.mylauncher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.mylauncher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher2.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher2.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher3.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher3.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.teslacoilsw.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.teslacoilsw.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.anddoes.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.anddoes.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="org.adw.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="org.adw.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.fede.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.fede.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.doodleapp.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.doodleapp.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.gtp.nextlauncher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.gtp.nextlauncher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.neomtel.mxhome.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.neomtel.mxhome.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.miui.mihome2.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.miui.mihome2.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.sec.android.app.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.sec.android.app.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.huawei.launcher2.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.huawei.launcher2.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.huawei.launcher3.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.huawei.launcher3.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.qihoo360.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.qihoo360.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="net.qihoo.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="net.qihoo.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.lge.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.lge.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="org.adwfreak.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="org.adwfreak.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="org.adw.launcher_donut.permission.READ_SETTINGS"/>
+    <uses-permission android:name="org.adw.launcher_donut.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.sec.android.app.twlauncher.settings.READ_SETTINGS"/>
+    <uses-permission android:name="com.sec.android.app.twlauncher.settings.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.tencent.qqlauncher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.tencent.qqlauncher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.ebproductions.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.ebproductions.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="telecom.mdesk.permission.READ_SETTINGS"/>
+    <uses-permission android:name="telecom.mdesk.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="dianxin.permission.ACCESS_LAUNCHER_DATA"/>
+
+    <application>
 
     </application>
-
 </manifest>
