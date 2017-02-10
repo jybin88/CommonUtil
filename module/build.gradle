@@ -1,8 +1,5 @@
 apply plugin: 'com.android.library'
-/**配置发布开始**/
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.jybin88'
-/**配置发布结束**/
+apply plugin: 'com.github.dcendents.android-maven' //发布配置(3)
 
 android {
     compileSdkVersion 24

@@ -1,22 +1,24 @@
 buildscript {
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
-//        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
-    }
-
     repositories {
-        maven {
-//            name 'nd nexus android-public'
-            url "https://jitpack.io"
-        }
         jcenter()
     }
+
+    dependencies {
+        //这一句是Android Studio自带的
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        //这一名是JitPack插件
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5' //发布配置(1)
+    }
+
 }
 
 allprojects {
     repositories {
-        maven { url "https://jitpack.io"}
         jcenter()
+        maven { url "https://jitpack.io" } //发布配置(2)
     }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
