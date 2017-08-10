@@ -25,4 +25,6 @@ android {
 
 dependencies {
     compile "com.android.support:support-annotations:$vSupportLib"
+    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
+    compile 'com.afollestad.material-dialogs:commons:0.9.4.5'
 }
