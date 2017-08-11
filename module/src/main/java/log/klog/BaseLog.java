@@ -2,7 +2,8 @@ package log.klog;
 
 import android.util.Log;
 
-import com.socks.library.KLog;
+import log.KLog;
+
 
 public class BaseLog {
 
