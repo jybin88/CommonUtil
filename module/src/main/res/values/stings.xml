@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_util_permissioncheck_exception_title">权限检查异常</string>
+    <string name="common_util_permissioncheck_exception_content">请进入应用相关设置界面开启相应权限！</string>
+    <string name="common_util_permissioncheck_exception_close">关闭</string>
+
+    <string name="common_util_permissioncheck_title">没有权限</string>
+    <string name="common_util_permissioncheck_content">前往设置界面开启相关权限？</string>
+    <string name="common_util_permissioncheck_gosetting">前往开启</string>
+    <string name="common_util_permissioncheck_cancle">取消</string>
+</resources>
