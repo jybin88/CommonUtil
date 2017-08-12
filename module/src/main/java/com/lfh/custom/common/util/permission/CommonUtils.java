@@ -16,11 +16,11 @@ public class CommonUtils {
 
     public static MaterialDialog.Builder createFailureDialog(Activity activity, final FailureDialogCallback callback) {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(activity);
-        //// TODO: 2017/6/15 skd23以上以及非标准的sdk23以下的可以弹出正常的dialog，其余弹出异常dialog。
+        //skd23以上以及非标准的sdk23以下的可以弹出正常的dialog，其余弹出异常dialog。
         if (isContainExceptionBrand()) {
-            builder.title(activity.getResources().getString(R.string.permissioncheck_exception_title))
-                    .content(activity.getResources().getString(R.string.permissioncheck_exception_content))
-                    .negativeText(activity.getResources().getString(R.string.permissioncheck_exception_close))
+            builder.title(activity.getResources().getString(R.string.common_util_permissioncheck_exception_title))
+                    .content(activity.getResources().getString(R.string.common_util_permissioncheck_exception_content))
+                    .negativeText(activity.getResources().getString(R.string.common_util_permissioncheck_exception_close))
                     .onAny(new MaterialDialog.SingleButtonCallback() {
                         @Override
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
@@ -29,10 +29,10 @@ public class CommonUtils {
                         }
                     });
         } else {
-            builder.title(activity.getResources().getString(R.string.permissioncheck_title))
-                    .content(activity.getResources().getString(R.string.permissioncheck_content))
-                    .positiveText(activity.getResources().getString(R.string.permissioncheck_gosetting))
-                    .negativeText(activity.getResources().getString(R.string.permissioncheck_cancle))
+            builder.title(activity.getResources().getString(R.string.common_util_permissioncheck_title))
+                    .content(activity.getResources().getString(R.string.common_util_permissioncheck_content))
+                    .positiveText(activity.getResources().getString(R.string.common_util_permissioncheck_gosetting))
+                    .negativeText(activity.getResources().getString(R.string.common_util_permissioncheck_cancle))
                     .onAny(new MaterialDialog.SingleButtonCallback() {
                         @Override
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {

@@ -4,14 +4,14 @@ package log;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
-import com.socks.library.klog.BaseLog;
-import com.socks.library.klog.FileLog;
-import com.socks.library.klog.JsonLog;
-import com.socks.library.klog.XmlLog;
-
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+
+import log.klog.BaseLog;
+import log.klog.FileLog;
+import log.klog.JsonLog;
+import log.klog.XmlLog;
 
 public final class KLog {
 

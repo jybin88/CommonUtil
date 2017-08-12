@@ -2,12 +2,13 @@ package log.klog;
 
 import android.util.Log;
 
-import com.socks.library.KLog;
-import com.socks.library.KLogUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import log.KLog;
+import log.KLogUtil;
 
 public class JsonLog {
 
