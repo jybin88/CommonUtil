@@ -19,7 +19,7 @@ CommonUtil
 
 ### 2. 在Module的build.gradle添加依赖
 
-    compile 'com.github.jybin88:CommonUtil:v0.2'
+    compile 'com.github.jybin88:CommonUtil:v1.4'
     
 DimenUtil
 ---------
