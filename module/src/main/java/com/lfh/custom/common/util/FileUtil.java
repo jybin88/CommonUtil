@@ -14,6 +14,33 @@ public class FileUtil {
     public FileUtil() {
         /* no-op */
     }
+    
+    /**
+     *   * 获取cache路径
+     *   *
+     *   * @param pContext 上下文
+     *   * @return cache路径
+     *   
+     */
+    private static String getDiskCachePath(Context pContext) {
+        String cachePath = "";
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || !Environment.isExternalStorageRemovable()) {
+            //存在外部sdcard
+            File cacheDir = pContext.getExternalCacheDir();
+
+            if (null != cacheDir) {//不为空
+                cachePath = cacheDir.getPath();
+            }
+        } else {//不存在外部sdcard
+            cachePath = pContext.getCacheDir().getPath();
+        }
+
+        if (!TextUtils.isEmpty(cachePath) && !cachePath.endsWith("/")) {//保证以"/"结尾
+            cachePath = cachePath + "/";
+        }
+
+        return cachePath;
+    }
 
     /**
      * 从Uri中获取图片真实地址
