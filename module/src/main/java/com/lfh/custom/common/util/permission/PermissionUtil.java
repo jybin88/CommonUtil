@@ -15,6 +15,29 @@ public class PermissionUtil {
     /**
      * 权限申请
      *
+     * @param context
+     * @param client    权限申请结果回调
+     * @param permissions
+     */
+    public static void request(final Context context, final IPermissionClient client, final String... permissions) {
+        if (client == null) {
+            throw new IllegalArgumentException("client is null");
+        }
+
+        getPermissionObservable(context, permissions).subscribe(new Action1<Boolean>() {
+            @Override
+            public void call(Boolean granted) {
+                if (granted) {
+                    client.onSuccess(context);
+                } else {
+                    client.onFailure(context);
+                }
+            }
+        });
+    }
+    /**
+     * 权限申请
+     *
      * @param pActivity
      * @param client      权限申请结果回调
      * @param permissions
@@ -80,23 +103,46 @@ public class PermissionUtil {
      * 返回一个Observable，方便链式调用。在SDK>23以上通过RxPermission返回。否则通过PermissionChecker.checkSelfPermission()判断进行
      * 结果返回。
      *
-     * @param pActivity
+     * @param context
      * @param permissions 需要申请的权限
+     *
      * @return Observable
      */
-    public static Observable<Boolean> getPermissionObservable(final Activity pActivity, final String... permissions) {
+    public static Observable<Boolean> getPermissionObservable(final Context context, final String... permissions) {
         if (isSdkOver23()) {
-            return new RxPermissions(pActivity).request(permissions).flatMap(new Func1<Boolean, Observable<Boolean>>() {
+            return RxPermissions.getInstance(context).request(permissions).flatMap(new Func1<Boolean, Observable<Boolean>>() {
                 @Override
                 public Observable<Boolean> call(Boolean granted) {
-                    return Observable.just(checkIsRealTrue(granted, pActivity, permissions));
+                    return Observable.just(checkIsRealTrue(granted, context, permissions));
                 }
             });
 
         } else {
-            return Observable.just(isGrant(pActivity, permissions));
+            return Observable.just(isGrant(context, permissions));
         }
     }
+
+//    /**
+//     * 返回一个Observable，方便链式调用。在SDK>23以上通过RxPermission返回。否则通过PermissionChecker.checkSelfPermission()判断进行
+//     * 结果返回。
+//     *
+//     * @param pActivity
+//     * @param permissions 需要申请的权限
+//     * @return Observable
+//     */
+//    public static Observable<Boolean> getPermissionObservable(final Activity pActivity, final String... permissions) {
+//        if (isSdkOver23()) {
+//            return new RxPermissions(pActivity).request(permissions).flatMap(new Func1<Boolean, Observable<Boolean>>() {
+//                @Override
+//                public Observable<Boolean> call(Boolean granted) {
+//                    return Observable.just(checkIsRealTrue(granted, pActivity, permissions));
+//                }
+//            });
+//
+//        } else {
+//            return Observable.just(isGrant(pActivity, permissions));
+//        }
+//    }
 
     /**
      * 权限授予成功回调,但是目前发现小米/oppo等有些手机的位置权限并没遵循Google标准，
