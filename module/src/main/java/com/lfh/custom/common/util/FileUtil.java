@@ -4,7 +4,11 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
+
+import java.io.File;
 
 /**
  * Created by lifuhai on 2017/2/10 0010.
@@ -14,7 +18,7 @@ public class FileUtil {
     public FileUtil() {
         /* no-op */
     }
-    
+
     /**
      *   * 获取cache路径
      *   *
