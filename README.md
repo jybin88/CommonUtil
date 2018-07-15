@@ -143,11 +143,9 @@ public static void createShortcut(Context pContext, String pShortcutName, Intent
 public static void createShortcut(Context pContext, String pShortcutName, Intent pIntent, 
     Bitmap pShortcutIcon)
 ```
-UiUtil
+AppUtil
 ------
 ```java
-public static String getAuthorityFromPermission(Context context)
-
 /**
  * 获取APP图标
  *
