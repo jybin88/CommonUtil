@@ -11,9 +11,7 @@ import log.KLog;
 import log.KLogUtil;
 
 public class JsonLog {
-
     public static void printJson(String tag, String msg, String headString) {
-
         String message;
 
         try {

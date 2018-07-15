@@ -14,13 +14,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 public class FileLog {
-
     private static final String FILE_PREFIX = "KLog_";
     private static final String FILE_FORMAT = ".log";
 
     public static void printFile(String tag, File targetDirectory, @Nullable String fileName, String headString, String msg) {
-
         fileName = (fileName == null) ? getFileName() : fileName;
+
         if (save(targetDirectory, fileName, msg)) {
             Log.d(tag, headString + " save log success ! location is >>>" + targetDirectory.getAbsolutePath() + "/" + fileName);
         } else {
@@ -52,7 +51,6 @@ public class FileLog {
             e.printStackTrace();
             return false;
         }
-
     }
 
     private static String getFileName() {

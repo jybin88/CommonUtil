@@ -1,6 +1,5 @@
 package log;
 
-
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
@@ -14,10 +13,8 @@ import log.klog.JsonLog;
 import log.klog.XmlLog;
 
 public final class KLog {
-
     public static final String LINE_SEPARATOR = System.getProperty("line.separator");
     public static final String NULL_TIPS = "Log with null object";
-
     private static final String DEFAULT_MESSAGE = "execute";
     private static final String PARAM = "Param";
     private static final String NULL = "null";
@@ -54,11 +51,11 @@ public final class KLog {
     }
 
     public static void v() {
-        printLog(V, null, DEFAULT_MESSAGE);
+        printLog(V, "", DEFAULT_MESSAGE);
     }
 
     public static void v(Object msg) {
-        printLog(V, null, msg);
+        printLog(V, "", msg);
     }
 
     public static void v(String tag, Object... objects) {
@@ -66,11 +63,11 @@ public final class KLog {
     }
 
     public static void d() {
-        printLog(D, null, DEFAULT_MESSAGE);
+        printLog(D, "", DEFAULT_MESSAGE);
     }
 
     public static void d(Object msg) {
-        printLog(D, null, msg);
+        printLog(D, "", msg);
     }
 
     public static void d(String tag, Object... objects) {
@@ -78,11 +75,11 @@ public final class KLog {
     }
 
     public static void i() {
-        printLog(I, null, DEFAULT_MESSAGE);
+        printLog(I, "", DEFAULT_MESSAGE);
     }
 
     public static void i(Object msg) {
-        printLog(I, null, msg);
+        printLog(I, "", msg);
     }
 
     public static void i(String tag, Object... objects) {
@@ -90,11 +87,11 @@ public final class KLog {
     }
 
     public static void w() {
-        printLog(W, null, DEFAULT_MESSAGE);
+        printLog(W, "", DEFAULT_MESSAGE);
     }
 
     public static void w(Object msg) {
-        printLog(W, null, msg);
+        printLog(W, "", msg);
     }
 
     public static void w(String tag, Object... objects) {
@@ -102,11 +99,11 @@ public final class KLog {
     }
 
     public static void e() {
-        printLog(E, null, DEFAULT_MESSAGE);
+        printLog(E, "", DEFAULT_MESSAGE);
     }
 
     public static void e(Object msg) {
-        printLog(E, null, msg);
+        printLog(E, "", msg);
     }
 
     public static void e(String tag, Object... objects) {
@@ -114,11 +111,11 @@ public final class KLog {
     }
 
     public static void a() {
-        printLog(A, null, DEFAULT_MESSAGE);
+        printLog(A, "", DEFAULT_MESSAGE);
     }
 
     public static void a(Object msg) {
-        printLog(A, null, msg);
+        printLog(A, "", msg);
     }
 
     public static void a(String tag, Object... objects) {
@@ -126,7 +123,7 @@ public final class KLog {
     }
 
     public static void json(String jsonFormat) {
-        printLog(JSON, null, jsonFormat);
+        printLog(JSON, "", jsonFormat);
     }
 
     public static void json(String tag, String jsonFormat) {
@@ -134,7 +131,7 @@ public final class KLog {
     }
 
     public static void xml(String xml) {
-        printLog(XML, null, xml);
+        printLog(XML, "", xml);
     }
 
     public static void xml(String tag, String xml) {
@@ -142,7 +139,7 @@ public final class KLog {
     }
 
     public static void file(File targetDirectory, Object msg) {
-        printFile(null, targetDirectory, null, msg);
+        printFile("", targetDirectory, null, msg);
     }
 
     public static void file(String tag, File targetDirectory, Object msg) {
@@ -154,11 +151,11 @@ public final class KLog {
     }
 
     public static void debug() {
-        printDebug(null, DEFAULT_MESSAGE);
+        printDebug("", DEFAULT_MESSAGE);
     }
 
     public static void debug(Object msg) {
-        printDebug(null, msg);
+        printDebug("", msg);
     }
 
     public static void debug(String tag, Object... objects) {
@@ -170,7 +167,6 @@ public final class KLog {
     }
 
     private static void printStackTrace() {
-
         if (!IS_SHOW_LOG) {
             return;
         }
@@ -199,7 +195,6 @@ public final class KLog {
     }
 
     private static void printLog(int type, String tagStr, Object... objects) {
-
         if (!IS_SHOW_LOG) {
             return;
         }
@@ -225,7 +220,6 @@ public final class KLog {
                 XmlLog.printXml(tag, msg, headString);
                 break;
         }
-
     }
 
     private static void printDebug(String tagStr, Object... objects) {
@@ -238,7 +232,6 @@ public final class KLog {
 
 
     private static void printFile(String tagStr, File targetDirectory, String fileName, Object objectMsg) {
-
         if (!IS_SHOW_LOG) {
             return;
         }
@@ -252,9 +245,7 @@ public final class KLog {
     }
 
     private static String[] wrapperContent(int stackTraceIndex, String tagStr, Object... objects) {
-
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-
         StackTraceElement targetElement = stackTrace[stackTraceIndex];
         String className = targetElement.getClassName();
         String[] classNameInfo = className.split("\\.");
@@ -273,7 +264,7 @@ public final class KLog {
             lineNumber = 0;
         }
 
-        String tag = (tagStr == null ? className : tagStr);
+        String tag = (TextUtils.isEmpty(tagStr) ? className : tagStr);
 
         if (mIsGlobalTagEmpty && TextUtils.isEmpty(tag)) {
             tag = TAG_DEFAULT;
@@ -288,7 +279,6 @@ public final class KLog {
     }
 
     private static String getObjectsString(Object... objects) {
-
         if (objects.length > 1) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("\n");
@@ -300,11 +290,11 @@ public final class KLog {
                     stringBuilder.append(PARAM).append("[").append(i).append("]").append(" = ").append(object.toString()).append("\n");
                 }
             }
+
             return stringBuilder.toString();
         } else {
             Object object = objects[0];
             return object == null ? NULL : object.toString();
         }
     }
-
 }

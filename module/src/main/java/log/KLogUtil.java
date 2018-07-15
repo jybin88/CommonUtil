@@ -3,7 +3,10 @@ package log;
 import android.text.TextUtils;
 import android.util.Log;
 
-public class KLogUtil {
+public final class KLogUtil {
+    private KLogUtil() {
+        /*private constructor*/
+    }
 
     public static boolean isEmpty(String line) {
         return TextUtils.isEmpty(line) || line.equals("\n") || line.equals("\t") || TextUtils.isEmpty(line.trim());

@@ -4,13 +4,10 @@ import android.util.Log;
 
 import log.KLog;
 
-
 public class BaseLog {
-
     private static final int MAX_LENGTH = 4000;
 
     public static void printDefault(int type, String tag, String msg) {
-
         int index = 0;
         int length = msg.length();
         int countOfSub = length / MAX_LENGTH;
@@ -49,5 +46,4 @@ public class BaseLog {
                 break;
         }
     }
-
 }
