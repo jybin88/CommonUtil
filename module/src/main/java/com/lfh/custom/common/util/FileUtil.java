@@ -68,7 +68,7 @@ public final class FileUtil {
      *
      * @param pFilePath 路径
      */
-    public byte[] getFileBytes(String pFilePath) {
+    public static byte[] getFileBytes(String pFilePath) {
         byte[] buffer = null;
 
         try {
@@ -109,7 +109,7 @@ public final class FileUtil {
      *                 {@link android.os.Environment#DIRECTORY_MOVIES}.or 自定义文件夹名称
      * @return 缓存文件夹 如果没有SD卡或SD卡有问题则返回内存缓存目录，否则优先返回SD卡缓存目录
      */
-    public File getCacheDirectory(Context pContext, String pType) {
+    public static File getCacheDirectory(Context pContext, String pType) {
         if (null == pContext) {
             KLog.i(TAG, "getCacheDirectory fail, the reason is context is null");
             return null;
@@ -149,7 +149,7 @@ public final class FileUtil {
      * @return 缓存目录文件夹 或 null（创建目录文件失败）
      * 注：该方法获取的目录是能供当前应用自己使用，外部应用没有读写权限，如 系统相机应用
      */
-    private File getInternalCacheDirectory(Context pContext, String pType) {
+    private static File getInternalCacheDirectory(Context pContext, String pType) {
         File appCacheDir;
 
         if (TextUtils.isEmpty(pType)) {
@@ -181,7 +181,7 @@ public final class FileUtil {
      *                 {@link android.os.Environment#DIRECTORY_MOVIES}.or 自定义文件夹名称
      * @return 缓存目录文件夹 或 null（无SD卡或SD卡挂载失败）
      */
-    private File getExternalCacheDirectory(Context pContext, String pType) {
+    private static File getExternalCacheDirectory(Context pContext, String pType) {
         File appCacheDir;
 
         if (!TextUtils.equals(Environment.MEDIA_MOUNTED, Environment.getExternalStorageState())) {
