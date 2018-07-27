@@ -57,15 +57,12 @@ public class PreferenceUtil {
 
     }
 
-    @SuppressWarnings("unused")
     public boolean read(Context pContext, String pKey, boolean pDefaultValue) {
         SharedPreferences sp = pContext.getApplicationContext().getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
 
         return sp.getBoolean(pKey, pDefaultValue);
     }
 
-
-    @SuppressWarnings("unused")
     public boolean write(Context pContext, String pKey, boolean pValue) {
         SharedPreferences sp = pContext.getApplicationContext().getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
 
@@ -77,7 +74,6 @@ public class PreferenceUtil {
 
         return sp.getLong(pKey, pDefaultValue);
     }
-
 
     public boolean write(Context pContext, String pKey, long pValue) {
         SharedPreferences sp = pContext.getApplicationContext().getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);

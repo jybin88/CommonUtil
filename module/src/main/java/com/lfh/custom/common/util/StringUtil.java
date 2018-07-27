@@ -16,20 +16,62 @@ public class StringUtil {
     /**
      * 是否是有效的手机号码
      *
-     * @param phoneNumber 手机号码
+     * @param pPhone 手机号码
      * @return true false
      */
-    public static boolean isPhoneNumberValid(String phoneNumber) {
+    public static boolean isPhoneNumberValid(String pPhone) {
+        if (TextUtils.isEmpty(pPhone)) {
+            return false;
+        }
+
         boolean isValid = false;
-        String expression = "((^(13|15|18)[0-9]{9}$)|(^0[1,2]{1}\\d{1}-?\\d{8}$)|(^0[3-9] {1}\\d{2}-?\\d{7,8}$)|(^0[1,2]{1}\\d{1}-?\\d{8}-(\\d{1,4})$)|(^0[3-9]{1}\\d{2}-? \\d{7,8}-(\\d{1,4})$))";
+        String expression = "^((13[0-9])|(15[^4])|(166)|(17[0-8])|(18[0-9])|(19[8-9])|(14[^[1-4]]))\\d{8}$";
         Pattern pattern = Pattern.compile(expression);
-        Matcher matcher = pattern.matcher(phoneNumber);
+        Matcher matcher = pattern.matcher(pPhone);
 
         if (matcher.matches()) {
             isValid = true;
         }
 
         return isValid;
+    }
+
+    /**
+     * 是否是有效的邮箱
+     *
+     * @param pEmail 邮箱
+     * @return true false
+     */
+    public static boolean isEmailValid(String pEmail) {
+        if (TextUtils.isEmpty(pEmail)) {
+            return false;
+        }
+
+        boolean isValid = false;
+        String expression = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+        Pattern pattern = Pattern.compile(expression);
+        Matcher matcher = pattern.matcher(pEmail);
+
+        if (matcher.matches()) {
+            isValid = true;
+        }
+
+        return isValid;
+    }
+
+    /**
+     * 是否全数字
+     *
+     * @param pValue 字符串
+     * @return true false
+     */
+    public static boolean isNumeric(String pValue) {
+        if (TextUtils.isEmpty(pValue)) {
+            return false;
+        }
+
+        Pattern pattern = Pattern.compile("[0-9]*");
+        return pattern.matcher(pValue).matches();
     }
 
     /**
