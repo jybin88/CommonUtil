@@ -48,7 +48,7 @@ public final class AppUtil {
         BufferedReader bufferedReader = null;
 
         try {
-            bufferedReader = new BufferedReader(new FileReader("/proc/$pid/cmdline"));
+            bufferedReader = new BufferedReader(new FileReader("/proc/" + pProcessId + "/cmdline"));
             String processName = bufferedReader.readLine();
 
             if (!TextUtils.isEmpty(processName)) {
