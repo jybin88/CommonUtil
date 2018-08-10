@@ -3,11 +3,13 @@ package log.klog;
 import android.util.Log;
 
 import log.KLog;
+import log.KLogUtil;
 
 public class BaseLog {
     private static final int MAX_LENGTH = 4000;
 
     public static void printDefault(int type, String tag, String msg) {
+        KLogUtil.printLine(tag, true);
         int index = 0;
         int length = msg.length();
         int countOfSub = length / MAX_LENGTH;
@@ -22,6 +24,7 @@ public class BaseLog {
         } else {
             printSub(type, tag, msg);
         }
+        KLogUtil.printLine(tag, false);
     }
 
     private static void printSub(int type, String tag, String sub) {
