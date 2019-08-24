@@ -32,51 +32,51 @@ public class PreferenceUtil {
     }
 
     public String read(Context context, String key, String defaultValue) {
-        SharedPreferences sp = context.getApplicationContext().getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
 
         return sp.getString(key, defaultValue);
     }
 
     public boolean write(Context context, String key, String value) {
-        SharedPreferences sp = context.getApplicationContext().getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
 
         return sp.edit().putString(key, value).commit();
     }
 
     public int read(Context pContext, String pKey, int pDefaultValue) {
-        SharedPreferences sp = pContext.getApplicationContext().getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
+        SharedPreferences sp = pContext.getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
 
         return sp.getInt(pKey, pDefaultValue);
     }
 
 
     public boolean write(Context pContext, String pKey, int pValue) {
-        SharedPreferences sp = pContext.getApplicationContext().getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
+        SharedPreferences sp = pContext.getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
 
         return sp.edit().putInt(pKey, pValue).commit();
 
     }
 
     public boolean read(Context pContext, String pKey, boolean pDefaultValue) {
-        SharedPreferences sp = pContext.getApplicationContext().getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
+        SharedPreferences sp = pContext.getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
 
         return sp.getBoolean(pKey, pDefaultValue);
     }
 
     public boolean write(Context pContext, String pKey, boolean pValue) {
-        SharedPreferences sp = pContext.getApplicationContext().getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
+        SharedPreferences sp = pContext.getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
 
         return sp.edit().putBoolean(pKey, pValue).commit();
     }
 
     public long read(Context pContext, String pKey, long pDefaultValue) {
-        SharedPreferences sp = pContext.getApplicationContext().getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
+        SharedPreferences sp = pContext.getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
 
         return sp.getLong(pKey, pDefaultValue);
     }
 
     public boolean write(Context pContext, String pKey, long pValue) {
-        SharedPreferences sp = pContext.getApplicationContext().getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
+        SharedPreferences sp = pContext.getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
 
         return sp.edit().putLong(pKey, pValue).commit();
     }
