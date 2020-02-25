@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 
 /**
  * Preference 工具类
- * Created by lifuhai on 2017/2/13 0013.
+ *
+ * @author Jason
+ * @date 2017/2/13
  */
 public class PreferenceUtil {
     private String mPreferenceName = "preference";

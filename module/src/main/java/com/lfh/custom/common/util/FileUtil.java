@@ -4,8 +4,10 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -17,7 +19,8 @@ import java.io.IOException;
 import log.KLog;
 
 /**
- * Created by lifuhai on 2017/2/10 0010.
+ * @author lifuhai
+ * @date 2017/2/10
  */
 public final class FileUtil {
     private static final String TAG = "FileUtil";
@@ -109,6 +112,7 @@ public final class FileUtil {
      *                 {@link android.os.Environment#DIRECTORY_MOVIES}.or 自定义文件夹名称
      * @return 缓存文件夹 如果没有SD卡或SD卡有问题则返回内存缓存目录，否则优先返回SD卡缓存目录
      */
+    @RequiresApi(api = Build.VERSION_CODES.FROYO)
     public static File getCacheDirectory(Context pContext, String pType) {
         if (null == pContext) {
             KLog.i(TAG, "getCacheDirectory fail, the reason is context is null");
@@ -153,9 +157,11 @@ public final class FileUtil {
         File appCacheDir;
 
         if (TextUtils.isEmpty(pType)) {
-            appCacheDir = pContext.getCacheDir();  // /data/data/app_package_name/cache
+            // /data/data/app_package_name/cache
+            appCacheDir = pContext.getCacheDir();
         } else {
-            appCacheDir = new File(pContext.getFilesDir(), pType); // /data/data/app_package_name/files/pType
+            // /data/data/app_package_name/files/pType
+            appCacheDir = new File(pContext.getFilesDir(), pType);
         }
 
         if (!appCacheDir.exists() && !appCacheDir.mkdir()) {
@@ -181,6 +187,7 @@ public final class FileUtil {
      *                 {@link android.os.Environment#DIRECTORY_MOVIES}.or 自定义文件夹名称
      * @return 缓存目录文件夹 或 null（无SD卡或SD卡挂载失败）
      */
+    @RequiresApi(api = Build.VERSION_CODES.FROYO)
     private static File getExternalCacheDirectory(Context pContext, String pType) {
         File appCacheDir;
 
@@ -195,7 +202,8 @@ public final class FileUtil {
             appCacheDir = pContext.getExternalFilesDir(pType);
         }
 
-        if (null == appCacheDir) {// 有些手机需要通过自定义目录
+        if (null == appCacheDir) {
+            // 有些手机需要通过自定义目录
             appCacheDir = new File(Environment.getExternalStorageDirectory(), "Android/data/" + pContext.getPackageName() + "/cache/" + pType);
         }
 

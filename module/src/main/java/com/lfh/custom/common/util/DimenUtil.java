@@ -8,7 +8,9 @@ import android.util.TypedValue;
 
 /**
  * dp、sp、px间的转化
- * Created by lifuhai on 2017/1/19 0019.
+ *
+ * @author lifuhai
+ * @date 2017/1/19
  */
 public final class DimenUtil {
 

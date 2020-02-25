@@ -11,7 +11,8 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by lifuhai on 2017/2/10 0010.
+ * @author lifuhai
+ * @date 2017/2/10
  */
 public final class AppUtil {
     private AppUtil() {
