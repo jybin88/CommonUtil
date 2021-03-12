@@ -82,4 +82,16 @@ public class PreferenceUtil {
 
         return sp.edit().putLong(pKey, pValue).commit();
     }
+    
+    public float read(Context pContext, String pKey, float pDefaultValue) {
+        SharedPreferences sp = pContext.getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
+
+        return sp.getLong(pKey, pDefaultValue);
+    }
+
+    public boolean write(Context pContext, String pKey, float pValue) {
+        SharedPreferences sp = pContext.getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
+
+        return sp.edit().putFloat(pKey, pValue).commit();
+    }
 }
