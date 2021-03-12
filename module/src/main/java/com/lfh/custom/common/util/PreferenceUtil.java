@@ -86,7 +86,7 @@ public class PreferenceUtil {
     public float read(Context pContext, String pKey, float pDefaultValue) {
         SharedPreferences sp = pContext.getSharedPreferences(mPreferenceName, Context.MODE_PRIVATE);
 
-        return sp.getLong(pKey, pDefaultValue);
+        return sp.getFloat(pKey, pDefaultValue);
     }
 
     public boolean write(Context pContext, String pKey, float pValue) {
