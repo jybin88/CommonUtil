@@ -45,6 +45,13 @@ public final class ScreenUtil {
             e.printStackTrace();
         }
 
+        if (0 == statusBarHeight) {
+            //前面方法获取不到值重新获取一次
+            Resources resources = Resources.getSystem();
+            int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+            statusBarHeight = resources.getDimensionPixelSize(resourceId);
+        }
+
         return statusBarHeight;
     }
 
@@ -117,7 +124,7 @@ public final class ScreenUtil {
      *
      * @param pContext 上下文
      * @return 虚拟功能键高度
-     * @deprecated {@link com.lfh.custom.common.util.getNavigationBarHeight()}
+     * @deprecated {@see getNavigationBarHeight()}
      */
     public static int getVirtualBarHeight(Context pContext) {
         int virtualBarHeight = 0;
