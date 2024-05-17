@@ -1,10 +1,13 @@
 package com.lfh.custom.common.util;
 
 import android.annotation.SuppressLint;
+import android.app.Service;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
+import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.view.ContextThemeWrapper;
 import android.view.Display;
@@ -180,6 +183,24 @@ public final class ScreenUtil {
     }
 
     /**
+     * 虚拟导航键是否打开
+     *
+     * @param context 上下文
+     * @return true 打开 false 未打开
+     */
+    public static boolean navigationBarEnable(Context context) {
+        if (0 == getNavigationBarHeight(context)) {
+            return false;
+        }
+
+        if (navigationGestureEnabled(context)) {
+            return false;
+        }
+
+        return isHasNavigationBar(context);
+    }
+
+    /**
      * 检查是否存在虚拟按键栏
      *
      * @param pContext 上下文
@@ -214,17 +235,84 @@ public final class ScreenUtil {
     private static String getNavigationBarOverride() {
         String navigationBarOverride = "";
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            try {
-                Class c = Class.forName("android.os.SystemProperties");
-                Method m = c.getDeclaredMethod("get", String.class);
-                m.setAccessible(true);
-                navigationBarOverride = (String) m.invoke(null, "qemu.hw.mainkeys");
-            } catch (Throwable e) {
-                e.printStackTrace();
-            }
+        try {
+            Class<?> c = Class.forName("android.os.SystemProperties");
+            Method m = c.getDeclaredMethod("get", String.class);
+            m.setAccessible(true);
+            navigationBarOverride = (String) m.invoke(null, "qemu.hw.mainkeys");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return navigationBarOverride;
+    }
+
+    /**
+     * 判断手势导航是否开启
+     *
+     * @param context 上下文
+     * @return true 表示使用的是手势，false 表示使用的是虚拟导航键(NavigationBar)， 默认是false
+     */
+    private static boolean navigationGestureEnabled(Context context) {
+        return 0 != Settings.Secure.getInt(context.getContentResolver(), getNavigationGlobalInfo(), 0);
+    }
+
+    /**
+     * 获取手机设置中的"navigation_gesture_on"值（目前支持几大主流的全面屏手机，亲测华为、小米、oppo、魅族、vivo、三星都可以）
+     *
+     * @return "navigation_gesture_on"值
+     */
+    private static String getNavigationGlobalInfo() {
+        if (RomUtil.isHuawei() || RomUtil.isHonor()) {
+            return "navigationbar_is_min";
+        } else if (RomUtil.isXiaomi()) {
+            return "force_fsg_nav_bar";
+        } else if (RomUtil.isVivo()) {
+            return "navigation_gesture_on";
+        } else if (RomUtil.isOppo()) {
+            return "hide_navigationbar_enable";
+        } else if (RomUtil.isSamsung()) {
+            return "navigationbar_hide_bar_enabled";
+        } else if (RomUtil.isNubia()) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+                return "navigation_bar_can_hiden";
+            } else {
+                return "swipe_up_to_switch_apps_enabled";
+            }
+        }
+
+        return "navigationbar_is_min";
+    }
+
+    /**
+     * 根据屏幕真实高度与显示高度，判断虚拟导航栏是否显示
+     * @return true 表示虚拟导航栏显示，false 表示虚拟导航栏未显示
+     */
+    private static boolean isHasNavigationBar(Context context) {
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = windowManager.getDefaultDisplay();
+
+        DisplayMetrics realDisplayMetrics = new DisplayMetrics();
+        display.getRealMetrics(realDisplayMetrics);
+        int realHeight = realDisplayMetrics.heightPixels;
+        int realWidth = realDisplayMetrics.widthPixels;
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        display.getMetrics(displayMetrics);
+        int displayHeight = displayMetrics.heightPixels;
+        int displayWidth = displayMetrics.widthPixels;
+
+        // 部分无良厂商的手势操作，显示高度 + 导航栏高度，竟然大于物理高度，对于这种情况，直接默认未启用导航栏
+        if (displayHeight > displayWidth) {
+            if (displayHeight + ScreenUtil.getNavigationBarHeight(context) > realHeight) {
+                return false;
+            }
+        } else {
+            if (displayWidth + ScreenUtil.getNavigationBarHeight(context) > realWidth) {
+                return false;
+            }
+        }
+
+        return realWidth - displayWidth > 0 || realHeight - displayHeight > 0;
     }
 }
