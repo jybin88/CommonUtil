@@ -19,6 +19,7 @@ import java.util.Properties;
  */
 public class RomUtil {
     private static final String[] ROM_HUAWEI = {"huawei"};
+    private static final String[] ROM_HONOR = {"honor"};
     private static final String[] ROM_VIVO = {"vivo"};
     private static final String[] ROM_XIAOMI = {"xiaomi"};
     private static final String[] ROM_OPPO = {"oppo"};
@@ -38,6 +39,7 @@ public class RomUtil {
     private static final String[] ROM_SONY = {"sony"};
     private static final String[] ROM_GIONEE = {"gionee", "amigo"};
     private static final String[] ROM_MOTOROLA = {"motorola"};
+    private static final String[] ROM_NOKIA = {"Nokia"};
 
     private static final String VERSION_PROPERTY_HUAWEI = "ro.build.version.emui";
     private static final String VERSION_PROPERTY_VIVO = "ro.vivo.os.build.display.id";
@@ -64,6 +66,13 @@ public class RomUtil {
     public static boolean isHuawei() {
         return ROM_HUAWEI[0].equals(getRomInfo().name);
     }
+
+    /**
+     * Return whether the rom is made by honor.
+     *
+     * @return {@code true}: yes<br>{@code false}: no
+     */
+    public static boolean isHonor() {return ROM_HONOR[0].equals(getRomInfo().name);}
 
     /**
      * Return whether the rom is made by vivo.
@@ -234,6 +243,15 @@ public class RomUtil {
      */
     public static boolean isMotorola() {
         return ROM_MOTOROLA[0].equals(getRomInfo().name);
+    }
+
+    /**
+     * Return whether the rom is made by nokia.
+     *
+     * @return {@code true}: yes<br>{@code false}: no
+     */
+    public static boolean isNokia() {
+        return ROM_NOKIA[0].equals(getRomInfo().name);
     }
 
     /**
