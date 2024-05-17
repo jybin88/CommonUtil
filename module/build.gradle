@@ -1,15 +1,14 @@
 apply plugin: 'com.android.library'
-apply from: 'https://github.com/jybin88/public/raw/master/version.gradle'
+//apply from: 'https://github.com/jybin88/public/raw/master/version.gradle'
 apply plugin: 'com.github.dcendents.android-maven' //发布配置(3)
 
 android {
-    compileSdkVersion vCompileSdk
-    buildToolsVersion vBuildTools
+    compileSdkVersion 33
     defaultConfig {
-        minSdkVersion vMinSdk
-        targetSdkVersion vTargetSdk
-        versionCode 2
-        versionName "1.9.3"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 3
+        versionName "1.9.4"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -24,10 +23,10 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:support-annotations:$vSupportLib"
-    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
-    compile 'com.afollestad.material-dialogs:commons:0.9.4.5'
+    implementation "com.android.support:support-annotations:24.2.1"
+    implementation 'com.afollestad.material-dialogs:core:0.9.4.5'
+    implementation 'com.afollestad.material-dialogs:commons:0.9.4.5'
     //RxJava的依赖包
-    compile 'io.reactivex:rxjava:1.2.9'
-    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
+    implementation 'io.reactivex:rxjava:1.2.9'
+    implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
 }
