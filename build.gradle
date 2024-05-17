@@ -1,11 +1,13 @@
 buildscript {
     repositories {
+        google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 
     dependencies {
         //这一句是Android Studio自带的
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:4.1.2'
         //这一名是JitPack插件
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5' //发布配置(1)
     }
@@ -14,6 +16,7 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
         jcenter()
         maven { url "https://jitpack.io" } //发布配置(2)
     }
