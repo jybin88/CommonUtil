@@ -254,7 +254,16 @@ public final class ScreenUtil {
      * @return true 表示使用的是手势，false 表示使用的是虚拟导航键(NavigationBar)， 默认是false
      */
     private static boolean navigationGestureEnabled(Context context) {
-        return 0 != Settings.Secure.getInt(context.getContentResolver(), getNavigationGlobalInfo(), 0);
+        String globalInfo = getNavigationGlobalInfo();
+        if (RomUtil.isHuawei() || RomUtil.isHonor() || RomUtil.isXiaomi()) {
+            return 0 != Settings.Global.getInt(context.getContentResolver(), globalInfo, 0);
+        }
+
+        if (RomUtil.isOppo() || RomUtil.isVivo()) {
+            return 0 != Settings.Secure.getInt(context.getContentResolver(), globalInfo, 0);
+        }
+
+        return 0 != Settings.Global.getInt(context.getContentResolver(), globalInfo, 0);
     }
 
     /**
