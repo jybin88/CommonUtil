@@ -19,7 +19,7 @@ CommonUtil
 
 ### 2. 在Module的build.gradle添加依赖
 
-    implementation 'com.github.jybin88:CommonUtil:1.9.1'
+    implementation 'com.github.jybin88:CommonUtil:1.9.4.1'
     
 DimenUtil
 ---------
